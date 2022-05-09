@@ -1,4 +1,3 @@
-
 const button = $('#submitBtn');
 const country = $('#CountryListSelect').val();
 const APIKey = 'c0e8f455257235f308e6f6b97f8d9c8e';
