@@ -14,7 +14,7 @@
     <div class="container-fluid p-1 bg-primary text-white text-center">
         <h1>Weather Dashboard</h1>
     </div>
-    <div class="container mt-1">
+    <div class="container mt-4">
         <div class="row">
             <div class="col-sm-4">
                 <h3>Search for a city</h3>
@@ -269,8 +269,10 @@
                      </select>
                     <button type="button" class="btn btn-primary btn-block" id="submitBtn">Search</button>
                 </div>
-                <div class="container-fluid">
+                <div class="container-fluid d-grid mt-2 border p-2">
+                    <h4 class="text-center text-secondary">Search history</h4>
                     <!-- search history -->
+                    <p class="btn btn-secondary m-2">México</p>
                 </div>
 
             </div>
@@ -278,54 +280,47 @@
                 <div class="card container-fluid">
                     <h3><span id="country">Atlanta </span><span id="generalDate">(3/30/2021)</span></h3>
                     <p>Temp: <span id="generalTemperature">74.01</span>°c</p>
-                    <p>Wind: <span id="generalWind">6.67 </span>m/s</p>
+                    <p>Wind: <span id="generalWind">6.67 </span> m/s</p>
                     <p>Humidity: <span id="generalHumidity">46 </span>%</p>
                     <p>UV Index: <span id="generalUvIndex"></span></p>
                 </div>
-                <div class="container-fluid">
-                    <h4>5-Day Forecast:</h4>
-                    <div class="row">
-                        <div class=" card col-sm-2" id="first">
-                            <h5><span>3/31/2021</span></h5>
-                            <i></i>
-                            <p>Temp: <span id="temperature">74.01F</span></p>
-                            <p>Wind: <span id="wind">6.67 MPH</span></p>
-                            <p>Humidity: <span id="humidity">46%</span></p>
+                <div class="container-fluid mt-3">
+                    <h4>5-Day Forecast</h4>
+                    <div class="d-flex">
+                        <div class="card p-2 m-2" id="first">
+                            <h5><span id="card1Date">3/31/2021</span></h5>
+                            <span><img id="card1Icon" src=""></span>
+                            <p>Temp: <span id="card1Temperature">74.01</span>°C</p>
+                            <p>Wind: <span id="card1Wind">6.67</span> m/s</p>
+                            <p>Humidity: <span id="card1Humidity">46</span>%</p>
                         </div>
-                        <div class=" card col-sm-2" id="second">
-                            <h5><span>3/31/2021</span></h5>
-                            <i></i>
-                            <p>Temp: <span id="temperature">74.01F</span></p>
-                            <p>Wind: <span id="wind">6.67 MPH</span></p>
-                            <p>Humidity: <span id="humidity">46%</span></p>
+                        <div class="card p-2 m-2" id="second">
+                            <h5><span id="card2Date">3/31/2021</span></h5>
+                            <span><img id="card2Icon" src=""></span>
+                            <p>Temp: <span id="card2Temperature">74.01</span>°C</p>
+                            <p>Wind: <span id="card2Wind">6.67</span> m/s</p>
+                            <p>Humidity: <span id="card2Humidity">46</span>%</p>
                         </div>
-                        <div class="card col-sm-2" id="third">
-                            <h5><span>3/31/2021</span></h5>
-                            <i></i>
-                            <p>Temp: <span id="temperature">74.01F</span></p>
-                            <p>Wind: <span id="wind">6.67 MPH</span></p>
-                            <p>Humidity: <span id="humidity">46%</span></p>
+                        <div class="card p-2 m-2" id="third">
+                            <h5><span id="card3Date">3/31/2021</span></h5>
+                            <span><img id="card3Icon" src=""></span>
+                            <p>Temp: <span id="card3Temperature">74.01</span>°C</p>
+                            <p>Wind: <span id="card3Wind">6.67</span> m/s</p>
+                            <p>Humidity: <span id="card3Humidity">46</span>%</p>
                         </div>
-                        <div class="card col-sm-2" id="fourth">
-                            <h5><span>3/31/2021</span></h5>
-                            <i></i>
-                            <p>Temp: <span id="temperature">74.01F</span></p>
-                            <p>Wind: <span id="wind">6.67 MPH</span></p>
-                            <p>Humidity: <span id="humidity">46%</span></p>
+                        <div class="card p-2 m-2" id="fourth">
+                            <h5><span id="card4Date">3/31/2021</span></h5>
+                            <span><img id="card4Icon" src=""></span>
+                            <p>Temp: <span id="card4Temperature">74.01</span>°C</p>
+                            <p>Wind: <span id="card4Wind">6.67</span> m/s</p>
+                            <p>Humidity: <span id="card4Humidity">46</span>%</p>
                         </div>
-                        <div class="card col-sm-2" id="fifth">
-                            <h5><span>3/31/2021</span></h5>
-                            <i></i>
-                            <p>Temp: <span id="temperature">74.01F</span></p>
-                            <p>Wind: <span id="wind">6.67 MPH</span></p>
-                            <p>Humidity: <span id="humidity">46%</span></p>
-                        </div>
-                        <div class="card col-sm-2" id="sixth">
-                            <h5><span>3/31/2021</span></h5>
-                            <i></i>
-                            <p>Temp: <span id="temperature">74.01F</span></p>
-                            <p>Wind: <span id="wind">6.67 MPH</span></p>
-                            <p>Humidity: <span id="humidity">46%</span></p>
+                        <div class="card p-2 m-2" id="fifth">
+                            <h5><span id="card5Date">3/31/2021</span></h5>
+                            <span><img id="card5Icon" src=""></span>
+                            <p>Temp: <span id="card5Temperature">74.01</span>°C</p>
+                            <p>Wind: <span id="card5Wind">6.67</span> m/s</p>
+                            <p>Humidity: <span id="card5Humidity">46</span>%</p>
                         </div>
                     </div>
                 </div>
