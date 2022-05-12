@@ -1,0 +1,24 @@
+.low {
+    background-color: #299501;
+    color: white;
+    border-radius: 6px;
+    padding: 2px;
+}
+.moderate {
+    background-color: #f95901;
+    color: white;
+    border-radius: 6px;
+    padding: 2px;
+}
+.high{
+    background-color: #d90011;
+    color: white;
+    border-radius: 6px;
+    padding: 2px;
+}
+.veryHigh {
+    background-color: #6c49c9;
+    color: white;
+    border-radius: 6px;
+    padding: 2px;
+}

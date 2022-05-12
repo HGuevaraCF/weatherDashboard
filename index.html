@@ -267,24 +267,24 @@
                         <option value="Zambia">Zambia</option>
                         <option value="Zimbabwe">Zimbabwe</option>
                      </select>
-                    <button type="button" class="btn btn-primary btn-block" id="submitBtn">Search</button>
+                    <button type="button" name="principalSubmit" class="btn btn-primary btn-block submitButton" id="submitBtn">Search</button>
                 </div>
-                <div class="container-fluid d-grid mt-2 border p-2">
+                <div class="container-fluid d-grid mt-2 border p-2 submitButton" id="searchHistoryContainer">
                     <h4 class="text-center text-secondary">Search history</h4>
                     <!-- search history -->
-                    <p class="btn btn-secondary m-2">México</p>
+                    <!-- <button class="btn btn-secondary m-2 submitButton">México</button> -->
                 </div>
 
             </div>
             <div class="col-sm-8">
-                <div class="card container-fluid">
+                <div class="card container-fluid generalData">
                     <h3><span id="country">Atlanta </span><span id="generalDate">(3/30/2021)</span></h3>
                     <p>Temp: <span id="generalTemperature">74.01</span>°c</p>
                     <p>Wind: <span id="generalWind">6.67 </span> m/s</p>
                     <p>Humidity: <span id="generalHumidity">46 </span>%</p>
                     <p>UV Index: <span id="generalUvIndex"></span></p>
                 </div>
-                <div class="container-fluid mt-3">
+                <div class="container-fluid mt-3 generalData">
                     <h4>5-Day Forecast</h4>
                     <div class="d-flex">
                         <div class="card p-2 m-2" id="first">

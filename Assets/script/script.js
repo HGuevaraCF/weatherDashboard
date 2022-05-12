@@ -1,36 +1,50 @@
-// const moment = require("moment");
-
-
+const history = [];
 const APIKey = 'c0e8f455257235f308e6f6b97f8d9c8e';
 
-
-$('#submitBtn').on('click', function (event){
-    var country = $('#CountryListSelect').val();
-
+$('.submitButton').on('click', function (event){
+    $('.generalData').show();
+    var button = $(event.target).text();
+    if(button == 'Search'){
+        var country = $('#CountryListSelect').val();
+        history.push(country);
+        console.log("history: " + history);
+        localStorage.setItem('History', JSON.stringify(history));
+        var historyButton = $('<button>').addClass('btn btn-secondary m-2 submitButton').text(country).attr('id', country);
+        $('#searchHistoryContainer').append(historyButton);
+    }else{
+        var country = button;
+    }
     fetch(`https://api.openweathermap.org/data/2.5/weather?q=${country}&appid=${APIKey}&units=metric`).then(response => response.text())
         .then(result => {
-            // console.log(result);
             var data = JSON.parse(result);
             var lat = data.coord.lat;
             var lon = data.coord.lon;
-            // function getUvIndex() {
-            //     fetch(`https://api.openweathermap.org/data/2.5/uvi/forecast?lat=${lat}&lon=${lon}appid=${APIKey}&cnt=1`).then(response => response.text())
-            //     .then(result => {
-            //         var uvIndex = result[0].value;
-            //         resolve(uvIndex);
-            //     })
-            //     .catch(error => {
-            //         console.log('error: ' , error)
-            //     })
-            // }
-
             var date = moment.unix(data.dt).format('DD/MM/YYYY');
             $('#country').text(country + " ");
             $('#generalDate').text(date);
             $('#generalTemperature').text(data.main.temp);
             $('#generalWind').text(data.wind.speed);
             $('#generalHumidity').text(data.main.humidity);
-            $('#generalUvIndex').text('1');
+
+            fetch(`https://api.openweathermap.org/data/2.5/uvi/forecast?lat=${lat}&lon=${lon}&appid=${APIKey}&cnt=1`).then(response => response.text())
+            .then(result => {
+                var uvResult = JSON.parse(result);
+                var uvIndex = uvResult[0].value / 100;
+                if(uvIndex <= 2){
+                    $('#generalUvIndex').text(uvIndex.toString().substring(0, 4)).addClass('low');
+                } else if(uvIndex >= 3 && uvIndex <= 7){
+                    $('#generalUvIndex').text(uvIndex.toString().substring(0, 3)).addClass('moderate');
+                } else if(uvIndex >= 8 && uvIndex <= 10){
+                    $('#generalUvIndex').text(uvIndex.toString().substring(0, 3)).addClass('high');
+                } else if(uvIndex > 11){
+                    $('#generalUvIndex').text(uvIndex.toString().substring(0, 3)).addClass('veryHigh');
+                }
+                // $('#generalUvIndex').text(uvIndex);
+            })
+            .catch(error => {
+                console.log('Error: ' , error)
+            })
+            
 
             fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${APIKey}&units=metric`).then(response => response.text())
             .then(result => {
@@ -77,3 +91,15 @@ $('#submitBtn').on('click', function (event){
         });
 });
 
+$(document).ready(function(){
+    $('.generalData').hide();
+    if(localStorage.getItem('History') != null){
+        let historyData = JSON.parse(localStorage.getItem('History'));
+        historyData.forEach(data => {
+        var historyButton = $('<button>').addClass('btn btn-secondary m-2 submitButton').text(data).attr('id', data);
+        $('#searchHistoryContainer').append(historyButton);
+        // localStorage.setItem('History', JSON.stringify(history));
+        });
+    }
+    console.log("history 2: " + history);
+})
