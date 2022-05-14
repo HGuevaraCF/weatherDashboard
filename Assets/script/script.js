@@ -1,27 +1,28 @@
-const history = [];
 const APIKey = 'c0e8f455257235f308e6f6b97f8d9c8e';
 
+//searh for a country by clicking the "search" button or each of the history buttons
 $('.submitButton').on('click', function (event){
+    
     $('.generalData').show();
     var button = $(event.target).text();
     if(button == 'Search'){
         var country = $('#CountryListSelect').val();
-        history.push(country);
-        console.log("history: " + history);
-        localStorage.setItem('History', JSON.stringify(history));
         var historyButton = $('<button>').addClass('btn btn-secondary m-2 submitButton').text(country).attr('id', country);
         $('#searchHistoryContainer').append(historyButton);
+        saveOnLocalStorage();
     }else{
         var country = button;
     }
     fetch(`https://api.openweathermap.org/data/2.5/weather?q=${country}&appid=${APIKey}&units=metric`).then(response => response.text())
         .then(result => {
             var data = JSON.parse(result);
+            var icon = data.weather[0].icon;
             var lat = data.coord.lat;
             var lon = data.coord.lon;
             var date = moment.unix(data.dt).format('DD/MM/YYYY');
             $('#country').text(country + " ");
             $('#generalDate').text(date);
+            $('#generalClimateIcon').attr('src', `http://openweathermap.org/img/w/${icon}.png`);
             $('#generalTemperature').text(data.main.temp);
             $('#generalWind').text(data.wind.speed);
             $('#generalHumidity').text(data.main.humidity);
@@ -91,6 +92,7 @@ $('.submitButton').on('click', function (event){
         });
 });
 
+//Print the local storage on the history container
 $(document).ready(function(){
     $('.generalData').hide();
     if(localStorage.getItem('History') != null){
@@ -98,8 +100,16 @@ $(document).ready(function(){
         historyData.forEach(data => {
         var historyButton = $('<button>').addClass('btn btn-secondary m-2 submitButton').text(data).attr('id', data);
         $('#searchHistoryContainer').append(historyButton);
-        // localStorage.setItem('History', JSON.stringify(history));
         });
     }
-    console.log("history 2: " + history);
 })
+
+//save local storage 
+function saveOnLocalStorage(){
+    let history = [];
+    $('#searchHistoryContainer button').each(function(){
+        var count = $(this).attr('id')
+        history.push(count);
+    })
+    localStorage.setItem('History', JSON.stringify(history));
+}
