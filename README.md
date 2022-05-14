@@ -1,4 +1,4 @@
-# weatherDashboard
+# Weather Dashboard
 - This website is currently hosted on Github pages.
 - This website is designed to let the user know current and future climate conditions for a country
 
